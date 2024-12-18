@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url(./font/Inter-VariableFont_opsz\,wght.eot),
+    url(./font/Inter-VariableFont_opsz\,wght.otf),
+    url(./font/Inter-VariableFont_opsz\,wght.ttf),
+    url(./font/Inter-VariableFont_opsz\,wght.woff),
+    url(./font/Inter-VariableFont_opsz\,wght.woff2);
+}
+
+.list{
+    width: 594px;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 8px 35px 0px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    // padding: 24px 24px 18px 24px;
+}
+

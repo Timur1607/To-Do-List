@@ -1,0 +1,67 @@
+.main{
+    display: none;
+    padding: 32px 24px;
+    padding-bottom: 0;
+    
+
+    .point{
+        height: 21px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 26px;
+
+        &__checkbox{
+            margin-right: 16px;
+            width: 16px;
+            height: 16px;
+            margin-top: 3px;
+        }
+
+        &__text{
+            margin-right: 38px;
+            color: var(--Secondary-Dark-Color, #54595E);
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 21px; /* 131.25% */
+        }
+
+        &__button{
+            color: #000;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 21px; /* 131.25% */
+            border: none;
+            cursor: pointer;
+        }
+
+        &__forLeft{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &__script{
+        display: block;
+    }
+}
+
+#point__checkbox{
+    margin-right: 16px;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+}
+.pointStyle{
+    text-decoration-line: line-through;
+    opacity: 0.5;
+}
+
+.point input:checked ~ .point__text{ 
+    color: #54595E;
+    text-decoration-line: strikethrough;
+}
