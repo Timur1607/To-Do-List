@@ -16,17 +16,11 @@
             width: 16px;
             height: 16px;
             margin-top: 3px;
+
+           
         }
 
-        &__text{
-            margin-right: 38px;
-            color: var(--Secondary-Dark-Color, #54595E);
-            font-family: 'Inter';
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 21px; /* 131.25% */
-        }
+        
 
         &__button{
             color: #000;
@@ -50,18 +44,25 @@
     }
 }
 
-#point__checkbox{
-    margin-right: 16px;
-    width: 16px;
-    height: 16px;
-    margin-top: 3px;
-}
-.pointStyle{
-    text-decoration-line: line-through;
-    opacity: 0.5;
+.point__text{
+    margin-right: 38px;
+    color: var(--Secondary-Dark-Color, #54595E);
+    font-family: 'Inter';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px; /* 131.25% */
 }
 
-.point input:checked ~ .point__text{ 
-    color: #54595E;
-    text-decoration-line: strikethrough;
+// #point__checkbox{
+//     margin-right: 16px;
+//     width: 16px;
+//     height: 16px;
+//     margin-top: 3px;
+
+    
+// }
+.point__text_decoration{
+    text-decoration-line: line-through;
+    opacity: 0.5;
 }
