@@ -68,6 +68,12 @@ table {
   margin: 0 auto;
 }
 
+form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 h1 {
   color: #000;
   font-family: "Inter";
@@ -157,6 +163,7 @@ header .submit:active {
   line-height: 21px; /* 131.25% */
   border: none;
   cursor: pointer;
+  background: transparent;
 }
 .main .point__forLeft {
   display: flex;

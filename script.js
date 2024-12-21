@@ -6,7 +6,7 @@ let PointX = document.querySelectorAll('.point__button')   // крестик
 let check = document.querySelectorAll('.point__checkbox')
 let buttonDeleteMarkedItems = document.querySelector('.btn1')
 
-let addPointButton = document.querySelector('.submit')   //кнопка 'добавить'
+let addPointButton = document.querySelector('form')   //кнопка 'добавить'
 let inputText = document.querySelector('.input')  //ввод текста
 
 main.innerHTML = ``
@@ -26,22 +26,17 @@ let checkPoints = () => {
 }
 
 let watch = ''
-let addPoint = () => {
+let addPoint = (event) => {
+    event.preventDefault()
     let addStyle = (el) => {
-        // console.log('работает');
-        el.classList.add('point__text_decoration')
-        watch = watch + '+'
-        
-        if(watch.length % 2 === 0 ){
-            el.classList.remove('point__text_decoration')
-        }
-        // console.log(el.classList[1]);
+        el.classList.toggle('point__text_decoration')
+        console.log('yes');
     }
+    
 
     let deletePoint = () => {
         div.remove()
         checkPoints()
-        watch = ''
     }
 
     let deleteMarkedItems = () => {
@@ -61,7 +56,6 @@ let addPoint = () => {
     div.innerHTML = `
         <div class="point__forLeft">
             <input type="checkbox" class="point__checkbox" >
-            
             <p class="point__text">${inputText.value}</p>
         </div>
         <input type="button" value="❌" class="point__button">
@@ -98,18 +92,14 @@ let deleteAll = () => {
 
 
 buttonDeleteAll.addEventListener('click', () => deleteAll())
-addPointButton.addEventListener('click', () => addPoint())
+addPointButton.addEventListener('submit', () => addPoint(event))
 
+buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
 
 for(el of PointX){
     el.addEventListener('click', () => deletePoint())
 }
 
 for(el of check){
-    el.addEventListener('click', () => {
-        for(el of text){
-            addStyle(el)
-        }
-    })
+    el.addEventListener('click', () => addStyle())
 }
-
