@@ -6,17 +6,21 @@ let PointX = document.querySelectorAll('.point__button')   // крестик
 let check = document.querySelectorAll('.point__checkbox')
 let buttonDeleteMarkedItems = document.querySelector('.btn1')
 
-let addPointButton = document.querySelector('form')   //кнопка 'добавить'
+let sendFormButton = document.querySelector('form')   //кнопка 'добавить'
 let inputText = document.querySelector('.input')  //ввод текста
 
 let localStorage = window.localStorage
 
 main.innerHTML = ``
 
-let arr = []
+let arr = [
 
+]
 
-localStorage.toDoList
+let object = {  
+
+}
+
 
 
 
@@ -34,22 +38,36 @@ let checkPoints = () => {
 }
 
 let watch = ''
-let addPoint = (event) => {
-    
+let sendForm = (event) => {
     event.preventDefault()
+    let txt = inputText.value
+    arr.push({'input': txt, 'checkbox': false, 'deletePoint': false})
+    addPoint(arr[arr.length-1])
+
     
-    // if(a.length === )
-    
-    
+    inputText.value = ''
+    console.log(arr);
+
+    localStorage.setItem("toDoList", JSON.stringify(object))   
+}
+
+let addPoint = (object) => {
     let addStyle = (el) => {
         el.classList.toggle('point__text_decoration')
+        object.checkbox = !object.checkbox
+        localStorage.setItem("toDoList", JSON.stringify(arr)) 
+        console.log(arr);
     }
 
     let deletePoint = () => {
         div.remove()
         checkPoints()
+        // localStorage.setItem('toDoList', object.deletePoint = true )
+        object.deletePoint = true
+        console.log(arr);
     }
-  
+
+
 
     main.classList.add('main__script')
     footer.classList.add('footer__script')
@@ -59,8 +77,8 @@ let addPoint = (event) => {
     div.classList.add('point')
     div.innerHTML = `
         <div class="point__forLeft">
-            <input type="checkbox" class="point__checkbox" >
-            <p class="point__text">${inputText.value}</p>
+            <input type="checkbox" class="point__checkbox" ${object.checkbox ? 'checked' : ''}>
+            <p class="point__text ${object.checkbox ? 'point__text_decoration' : ''}">${object.input}</p>
         </div>
         <input type="button" value="❌" class="point__button">
     `
@@ -68,72 +86,15 @@ let addPoint = (event) => {
     let checkbox = div.querySelector('.point__checkbox')
 
     main.appendChild(div)
-    let txt = inputText.value
-    inputText.value = ''
 
-    
-    
-    localStorage.setItem("toDoList", arr)
-    console.log(localStorage.toDoList.length)
-    arr.push(txt)
-    // check = document.querySelector('.point__checkbox')
     let text = div.querySelector('.point__text')
 
-    div.querySelector(".point__button").addEventListener('click', () => {console.log(txt); deletePoint()} )
+
+
+    div.querySelector(".point__button").addEventListener('click', () => { deletePoint()} )
     checkbox.addEventListener('click', () => addStyle(text))
     buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
 }
-
-let addPointlocal = () => {
-    
-    // event.preventDefault()
-    
-    // if(a.length === )
-    
-    
-    let addStyle = (el) => {
-        el.classList.toggle('point__text_decoration')
-    }
-
-    let deletePoint = () => {
-        div.remove()
-        checkPoints()
-    }
-  
-
-    main.classList.add('main__script')
-    footer.classList.add('footer__script')
-    
-    
-    let div = document.createElement('div')
-    div.classList.add('point')
-    div.innerHTML = `
-        <div class="point__forLeft">
-            <input type="checkbox" class="point__checkbox" >
-            <p class="point__text">${inputText.value}</p>
-        </div>
-        <input type="button" value="❌" class="point__button">
-    `
-
-    let checkbox = div.querySelector('.point__checkbox')
-
-    main.appendChild(div)
-    let txt = inputText.value
-    inputText.value = ''
-
-    
-    
-    localStorage.setItem("toDoList", arr)
-    console.log(localStorage.toDoList.length)
-    arr.push(txt)
-    // check = document.querySelector('.point__checkbox')
-    let text = div.querySelector('.point__text')
-
-    div.querySelector(".point__button").addEventListener('click', () => {console.log(txt); deletePoint()} )
-    checkbox.addEventListener('click', () => addStyle(text))
-    buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
-}
-
 
 let deleteMarkedItems = () => {
     let text = document.querySelectorAll('.point__text')
@@ -147,25 +108,20 @@ let deleteMarkedItems = () => {
 }
 
 
-
 let deleteAll = () => {
     footer.classList.remove('footer__script')
     main.innerHTML = ``
     main.classList.remove('main__script')
     watch = ''
     localStorage.clear()
-    arr = []
+    object = {}                          /////////////////////////////////////////////////////////
 }
 
 
-
-
-
-
 buttonDeleteAll.addEventListener('click', () => deleteAll())
-addPointButton.addEventListener('submit', () => {
-    addPoint(event)
-    localStorage.setItem("toDoList", arr)
+sendFormButton.addEventListener('submit', () => {
+    sendForm(event)
+    localStorage.setItem("toDoList", JSON.stringify(arr))          ////////////////////////////////////////////////////////  
 })
 
 buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
@@ -174,8 +130,29 @@ for(el of PointX){
     el.addEventListener('click', () => deletePoint())
 }
 
-for(let i = 0; i < localStorage.toDoList.length; i++){
-    addPointlocal()
-    console.log('yes');
+
+
+if(localStorage.getItem('toDoList') !== null){
+    arr = JSON.parse(localStorage.toDoList);
+    console.log(arr);
+    for(let i = 0; i < arr.length; i++){
+        console.log(arr[i].deletePoint);
+        
+        // if(arr[i].deletePoint === true){
+        //     delete arr[i]
+        //     console.log('удалил');
+            
+        // }
+    }
+    
+    for(let i = 0; i < arr.length; i++){
+        addPoint(arr[i])
+    }
 }
-//КОРОЧЕ НУЖНО СДЕЛАТЬ ТАК ЧТОБЫ МАССИВ ПОСЛЕ ПЕРЕЗАГРУЗКИ НЕ ОПУСТОШАЛСЯ, И ВРОДЕ ВСЕ БУДЕТ НОРМ
+// console.log(localStorage.getItem('toDoList'));
+
+
+
+
+
+
