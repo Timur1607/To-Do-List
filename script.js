@@ -64,6 +64,8 @@ let addPoint = (object) => {
         checkPoints()
         // localStorage.setItem('toDoList', object.deletePoint = true )
         object.deletePoint = true
+        arr = arr.filter(object => object.deletePoint !== true)
+        localStorage.setItem("toDoList", JSON.stringify(arr))
         console.log(arr);
     }
 
@@ -96,7 +98,7 @@ let addPoint = (object) => {
     buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
 }
 
-let deleteMarkedItems = () => {
+let deleteMarkedItems = () => {                            /////////////////////////////////////////////
     let text = document.querySelectorAll('.point__text')
     for(el of text){
         if(el.classList[1] === 'point__text_decoration'){
@@ -104,6 +106,12 @@ let deleteMarkedItems = () => {
             el.parentElement.parentElement.remove()
             checkPoints()
         }
+    }
+
+    for(let i = 0; i < arr.length; i++){
+        let object = arr[i]
+        arr = arr.filter(object => object.checkbox !== true)
+        localStorage.setItem('toDoList', JSON.stringify(arr))
     }
 }
 
@@ -114,14 +122,16 @@ let deleteAll = () => {
     main.classList.remove('main__script')
     watch = ''
     localStorage.clear()
-    object = {}                          /////////////////////////////////////////////////////////
+    // object = {}   
+    arr = []
+    localStorage.setItem('toDoList', JSON.stringify(arr))                     
 }
 
 
 buttonDeleteAll.addEventListener('click', () => deleteAll())
 sendFormButton.addEventListener('submit', () => {
     sendForm(event)
-    localStorage.setItem("toDoList", JSON.stringify(arr))          ////////////////////////////////////////////////////////  
+    localStorage.setItem("toDoList", JSON.stringify(arr))         
 })
 
 buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())

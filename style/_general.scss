@@ -29,3 +29,10 @@ form{
     justify-content:space-between;
     width: 100%;
 }
+
+@media screen and (max-width: 594px){
+    .list{
+        max-width: 594px;
+        width: 100%;
+    }
+}

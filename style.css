@@ -74,6 +74,12 @@ form {
   width: 100%;
 }
 
+@media screen and (max-width: 594px) {
+  .list {
+    max-width: 594px;
+    width: 100%;
+  }
+}
 h1 {
   color: #000;
   font-family: "Inter";
@@ -106,6 +112,7 @@ header .input {
   font-weight: 400;
   line-height: 21px; /* 131.25% */
   padding: 9px 32px 8px 13px;
+  margin-right: 24px;
 }
 header .submit {
   display: flex;
@@ -136,6 +143,28 @@ header .submit:active {
   border: none;
 }
 
+@media screen and (max-width: 594px) {
+  .hr {
+    max-width: 594px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+@media screen and (max-width: 400px) {
+  form {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 350px) {
+  h1 {
+    font-size: 50px;
+  }
+}
 .main {
   display: none;
   padding: 32px 24px;
@@ -242,4 +271,11 @@ header .submit:active {
 }
 .footer__script {
   display: flex;
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
 }/*# sourceMappingURL=style.css.map */
