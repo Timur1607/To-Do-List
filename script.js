@@ -3,7 +3,7 @@ let main = document.querySelector('.main')
 let footer = document.querySelector('.footer')
 let list = document.querySelector('.list')
 let PointX = document.querySelectorAll('.point__button')   // крестик
-let check = document.querySelectorAll('.point__checkbox')
+let check = document.querySelectorAll('.point__checkbox')   //чекбокс
 let buttonDeleteMarkedItems = document.querySelector('.btn1')
 
 let sendFormButton = document.querySelector('form')   //кнопка 'добавить'
@@ -62,7 +62,6 @@ let addPoint = (object) => {
     let deletePoint = () => {
         div.remove()
         checkPoints()
-        // localStorage.setItem('toDoList', object.deletePoint = true )
         object.deletePoint = true
         arr = arr.filter(object => object.deletePoint !== true)
         localStorage.setItem("toDoList", JSON.stringify(arr))
@@ -98,11 +97,10 @@ let addPoint = (object) => {
     buttonDeleteMarkedItems.addEventListener('click', () => deleteMarkedItems())
 }
 
-let deleteMarkedItems = () => {                            /////////////////////////////////////////////
+let deleteMarkedItems = () => {                           
     let text = document.querySelectorAll('.point__text')
     for(el of text){
         if(el.classList[1] === 'point__text_decoration'){
-            // deletePoint()
             el.parentElement.parentElement.remove()
             checkPoints()
         }
@@ -121,8 +119,7 @@ let deleteAll = () => {
     main.innerHTML = ``
     main.classList.remove('main__script')
     watch = ''
-    localStorage.clear()
-    // object = {}   
+    localStorage.clear() 
     arr = []
     localStorage.setItem('toDoList', JSON.stringify(arr))                     
 }
@@ -147,22 +144,18 @@ if(localStorage.getItem('toDoList') !== null){
     console.log(arr);
     for(let i = 0; i < arr.length; i++){
         console.log(arr[i].deletePoint);
-        
-        // if(arr[i].deletePoint === true){
-        //     delete arr[i]
-        //     console.log('удалил');
-            
-        // }
     }
     
     for(let i = 0; i < arr.length; i++){
         addPoint(arr[i])
     }
 }
-// console.log(localStorage.getItem('toDoList'));
 
 
-
+test()
+function test (x = 0, y = 0) {
+    console.log(x + y);
+}
 
 
 
