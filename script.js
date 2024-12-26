@@ -152,10 +152,3 @@ if(localStorage.getItem('toDoList') !== null){
 }
 
 
-test()
-function test (x = 0, y = 0) {
-    console.log(x + y);
-}
-
-
-
